@@ -1,0 +1,494 @@
+#,sample_no,kind,pattern,title,rule_summary,raw_snippets_for_form
+1,1,IF,IDIOM_PATTERN,Fehlerbehandlung bei Dateiöffnungsstatus,"Das Muster prüft, ob ein Dateistatus ungleich ""00"" ist. Bei Fehler wird eine Fehlermeldung ausgegeben und das Programm beendet. Es handelt sich um eine technische Fehlerbehandlung beim Dateiöffnen.","Quelltextbeleg 1:
+IF FILE-STATUS NOT = ""00""
+      DISPLAY ""Error opening the DB file  program will exit.""
+      GOBACK
+    END-IF
+
+Quelltextbeleg 2:
+IF FILE-STATUS not = ""00""
+      DISPLAY ""Error opening the DB file  program will exit.""
+      GOBACK
+    END-IF"
+2,2,IF,CONTROL_FLOW_TEMPLATE,Fehlerbehandlung bei SQL-Code-Abfrage,"Prüft, ob ein SQL-Code ungleich Null ist und behandelt dann einen Fehlerfall. Dabei wird ein Fehlercode gesetzt und eine Fehlerausgabe ausgeführt. Dies dient der Fehlererkennung nach Datenbankoperationen.","Quelltextbeleg 1:
+IF SQLCODE NOT EQUAL 0
+        MOVE '90' TO CA-RETURN-CODE
+        PERFORM WRITE-ERROR-MESSAGE
+DISPLAY ""EXEC_BLOCK_STUB""
+      END-IF
+
+Quelltextbeleg 2:
+IF SQLCODE NOT EQUAL 0 Then
+        MOVE '90' TO CA-RETURN-CODE
+        PERFORM WRITE-ERROR-MESSAGE
+DISPLAY ""EXEC_BLOCK_STUB""
+    END-IF
+
+Quelltextbeleg 3:
+IF SQLCODE NOT EQUAL 0
+      MOVE '98' TO D2-RETURN-CODE
+      PERFORM WRITE-ERROR-MESSAGE
+DISPLAY ""EXEC_BLOCK_STUB""
+    END-IF"
+3,3,IF,BUSINESS_RULE_CANDIDATE,Ende-des-Monats-Status bei Datumsgleichheit,"Wenn das aktuelle Tagesdatum mit dem Laufdatum übereinstimmt, wird ein End-der-Monat-Status gesetzt. Dies kennzeichnet das Erreichen des Monatsendes im Programmablauf. Die Regel steuert eine Statusmarkierung basierend auf dem Datum.","Quelltextbeleg 1:
+IF DATE-DD = RUN-DD
+              MOVE 'Y' TO EOM-SW
+
+Quelltextbeleg 2:
+IF  WEB-SCHEME EQUAL DFHVALUE
+        MOVE 'N'                TO AUTHENTICATE
+
+Quelltextbeleg 3:
+IF  WEB-HTTPMETHOD  EQUAL WEB-HTTP-GET
+            MOVE 'Y' TO USER-ACCESS"
+4,4,IF,CONTROL_FLOW_TEMPLATE,Verarbeitung nach Mitarbeitertyp steuern,"Das Muster unterscheidet die Verarbeitung basierend auf dem Mitarbeitertyp. Bei Mitarbeitertyp ""S"" wird die Verkaufsverarbeitung ausgeführt. Bei Mitarbeitertyp ""M"" erfolgt die Managementverarbeitung.","Quelltextbeleg 1:
+IF EMP-TYPE EQUAL 'S'
+        PERFORM 1000-PROCESS-SALES
+    ELSE
+        IF EMP-TYPE EQUAL 'M'
+            PERFORM 2000-PROCESS-MANAGEMENT"
+5,5,IF,DATA_VALIDATION,Prüfung von Feldkombinationen auf Fehlerzustand,Diese Regel prüft Kombinationen von zwei Feldern auf bestimmte Zeichenwerte. Bei Erfüllung der Bedingungen wird ein Fehlerindikator gesetzt. Die Struktur behandelt mehrere Fälle mit ähnlichen Prüfungen und setzt jeweils denselben Fehlerstatus.,"Quelltextbeleg 1:
+IF X = ' ' AND Y <> ' ' THEN
+          MOVE 1 TO WRONG
+        ELSE IF X = ' ' AND Y <> ' ' THEN
+          MOVE 1 TO WRONG
+        ELSE IF X = '>' AND Y <> '<' THEN
+          MOVE 1 TO WRONG
+        END-IF
+      END-IF"
+6,6,IF,DATA_VALIDATION,Prüfung und Zählung fehlerhafter Werte,"Die Regel prüft, ob ein bestimmter Wert ungleich Null ist. Bei Erfüllung wird eine Fehlermeldung ausgegeben und ein Fehlerzähler erhöht. Dies dient der Erkennung und Zählung fehlerhafter Werte.","Quelltextbeleg 1:
+IF WS-EXPONENT NOT = ZERO THEN
+         DISPLAY ""  *** INCORRECT EXPONENT ***""
+         ADD 1 TO WS-FAILED-COUNT
+     END-IF"
+7,7,IF,OTHER,Zuweisung basierend auf Wertvergleich,"Das Muster prüft, ob zwei Werte ungleich sind und weist je nach Ergebnis einen von zwei Werten zu. Es handelt sich um eine einfache Zuweisungsentscheidung basierend auf einem Vergleich. Die fachliche Bedeutung ist aus dem Code nicht eindeutig ableitbar.","Quelltextbeleg 1:
+IF wc-cur-maxdeltagare NOT = wc-cur-maxdeltagare
+        MOVE wc-lokalnamn TO jlokal-maxdeltagare
+    ELSE
+        MOVE wc-cur-maxdeltagare TO jlokal-maxdeltagare
+    END-IF"
+8,8,IF,CONTROL_FLOW_TEMPLATE,Fehlerbehandlung bei Antwortabweichung,"Das Muster prüft, ob eine Antwort ungleich einer erwarteten Antwort ist. Bei Ungleichheit werden Fehlerbehandlung, Rollback und Statusaktualisierung durchgeführt. Anschließend erfolgt eine Rückkehr aus der Prozedur.","Quelltextbeleg 1:
+IF  EIBRESP NOT EQUAL DFHRESP
+        MOVE FC-WRITE                TO FE-FN
+        MOVE '4400'                  TO FE-PARAGRAPH
+        PERFORM 9100-FILE-ERROR    THRU 9100-EXIT
+        PERFORM 9999-ROLLBACK      THRU 9999-EXIT
+        MOVE EIBDS              TO HTTP-FILE-ERROR
+        MOVE HTTP-FILE-ERROR         TO HTTP-507-TEXT
+        MOVE HTTP-FILE-LENGTH        TO HTTP-507-LENGTH
+        PERFORM 9800-STATUS-507    THRU 9800-EXIT
+        PERFORM 9000-RETURN        THRU 9000-EXIT"
+9,9,IF,IDIOM_PATTERN,Prüfung und Übernahme nicht-leerer Eingabefelder,"Prüft, ob ein Eingabefeld nicht leer ist, und setzt dann ein Flag sowie eine Ausgabefeldvariable. Diese Struktur dient der Übernahme von Eingabedaten in Ausgabefelder bei vorhandenen Werten. Es handelt sich um eine einfache Datenübernahme bei gültiger Eingabe.","Quelltextbeleg 1:
+IF IN-FIRST-NAME NOT = SPACES
+        MOVE 1 TO SET-DATA-FLAG
+        MOVE IN-FIRST-NAME TO IO-FIRST-NAME
+      END-IF
+
+Quelltextbeleg 2:
+IF IN-EXTENSION  NOT = SPACES
+        MOVE 1 TO SET-DATA-FLAG
+        MOVE IN-EXTENSION  TO IO-EXTENSION
+      END-IF
+
+Quelltextbeleg 3:
+IF IN-ZIP-CODE   NOT = SPACES
+        MOVE 1 TO SET-DATA-FLAG
+        MOVE IN-ZIP-CODE   TO IO-ZIP-CODE
+      END-IF"
+10,10,EVALUATE,DATA_VALIDATION,Validierung der Eingabeoption mit Fehlermeldung,"Das Muster prüft, ob eine Eingabeoption ungleich einem bestimmten Wert ist und gibt eine Fehlermeldung aus. Es dient der Validierung der Eingabeoption vor weiterer Verarbeitung. Die Meldung fordert zur Eingabe einer korrekten Option auf.","Quelltextbeleg 1:
+EVALUATE WRK-OPCAO
+    WHEN OTHER IF WRK-OPCAO NOT EQUAL 'X' DISPLAY 'ENTRE COM OPCAO CORRETA' END-IF
+END-EVALUATE"
+11,11,IF,IDIOM_PATTERN,Prüfung und Anzeige von SQL-Fehlercodes,"Das Muster prüft, ob ein SQL-Fehlercode ungleich Null ist. Bei Fehlern wird der Code in eine Anzeigevariable kopiert und eine Fehlermeldung mit dem Code ausgegeben. Es handelt sich um eine Standardfehlerbehandlung für SQL-Operationen.","Quelltextbeleg 1:
+IF SQLCODE NOT EQUAL TO 0
+                      MOVE SQLCODE TO WS-DISPLAY-SQLCODE
+                      DISPLAY 'ERROR ON DELETE - SQLCODE = '
+                      WS-DISPLAY-SQLCODE
+                   END-IF
+
+Quelltextbeleg 2:
+IF SQLCODE NOT EQUAL TO 0
+            MOVE SQLCODE TO WS-DISPLAY-SQLCODE
+            DISPLAY 'ERROR ON CLOSE CURSOR - SQLCODE = '
+            WS-DISPLAY-SQLCODE
+         END-IF
+
+Quelltextbeleg 3:
+IF SQLCODE NOT EQUAL TO 0
+      MOVE SQLCODE TO WS-DISPLAY-SQLCODE
+       DISPLAY 'ERROR ON SELECT COUNT - SQLCODE = '
+       WS-DISPLAY-SQLCODE
+    END-IF"
+12,12,IF,BUSINESS_RULE_CANDIDATE,Prüfung und Verarbeitung positiver Verkaufsbeträge,"Die Regel prüft, ob ein Verkaufsbetrag positiv ist. Bei positiver Prüfung werden Umsätze addiert, Werte für Berechnungen gesetzt und eine Prozedur zur Kommissionsberechnung aufgerufen. Andernfalls wird ein Kommentar mit einem Fehlerhinweis gesetzt.","Quelltextbeleg 1:
+IF WA-SALES-AMOUNT > 0
+       ADD  WA-SALES-AMOUNT  TO REGION-SALES
+       MOVE WA-SALES-AMOUNT  TO CALC-SALES
+       MOVE 0 TO CALC-COMMISSION
+       MOVE 'S' TO EMP-TYPE
+       CALL 'CWKTSUBC' USING EMP-TYPE
+                             CALC-SALES
+                             CALC-COMMISSION
+    ELSE
+       MOVE 'UH-OH' TO REGION-COMMENT
+
+Quelltextbeleg 2:
+IF WA-SALES-AMOUNT > 0
+       ADD  WA-SALES-AMOUNT  TO REGION-SALES
+       MOVE WA-SALES-AMOUNT  TO CALC-SALES
+       MOVE 0 TO CALC-COMMISSION
+       MOVE 'S' TO EMP-TYPE
+       CALL 'CWXTSUBC' USING EMP-TYPE
+                             CALC-SALES
+                             CALC-COMMISSION
+    ELSE
+       MOVE 'UH-OH' TO REGION-COMMENT
+
+Quelltextbeleg 3:
+IF WA-SALES-AMOUNT > 0
+       ADD  WA-SALES-AMOUNT  TO REGION-SALES
+       MOVE WA-SALES-AMOUNT  TO CALC-SALES
+       MOVE 0 TO CALC-COMMISSION
+       MOVE 'S' TO EMP-TYPE
+       CALL 'CWBWSUBC' USING EMP-TYPE
+                             CALC-SALES
+                             CALC-COMMISSION
+    ELSE
+       MOVE 'UH-OH' TO REGION-COMMENT"
+13,13,IF,IDIOM_PATTERN,Statusflag bei Wertgleichheit setzen,"Prüft, ob ein bestimmtes Feld den Wert '1' hat und setzt daraufhin eine zugehörige Status-Flag auf TRUE. Diese Struktur dient der einfachen Statuskennzeichnung basierend auf einem festen Wert. Es handelt sich um eine technische Statussteuerung ohne komplexe fachliche Logik.","Quelltextbeleg 1:
+IF WS-FL-ICHAR = '1'
+          SET SW-FILE-ZERO-T              TO TRUE
+        END-IF"
+14,14,IF,BUSINESS_RULE_CANDIDATE,Pfadprüfung mit Authentifizierungsfolge,"Das Muster prüft, ob ein bestimmter Pfad mit einem vorgegebenen Wert übereinstimmt. Bei Übereinstimmung wird eine Validierung durchgeführt. Anschließend erfolgt bei positivem Authentifizierungsstatus die Ausführung von Authentifizierungs- und Zugriffsprüfungen.","Quelltextbeleg 1:
+IF  WEB-PATH EQUAL RESOURCES
+        PERFORM 1200-VALIDATION        THRU 1200-EXIT
+        IF  AUTHENTICATE EQUAL 'Y'
+            PERFORM 1500-AUTHENTICATE  THRU 1500-EXIT
+            PERFORM 1600-USER-ACCESS   THRU 1600-EXIT"
+15,15,IF,DATA_VALIDATION,Eingabefeld Bindestrich durch Leerzeichen ersetzen,"Wenn ein bestimmtes Feld den Wert Bindestrich enthält, wird es durch ein Leerzeichen ersetzt. Dies dient der Normalisierung von Eingabedaten. Es handelt sich um eine einfache Ersetzung ohne weitere fachliche Logik.","Quelltextbeleg 1:
+IF SELECTMAKEFIELD = ""-""
+       MOVE "" "" TO SELECTMAKEFIELD
+    END-IF
+
+Quelltextbeleg 2:
+IF SELECTMODELFIELD = ""-""
+       MOVE "" "" TO SELECTMODELFIELD
+    END-IF
+
+Quelltextbeleg 3:
+IF LOCSELECTMAKEFIELD = ""-""
+       MOVE "" "" TO LOCSELECTMAKEFIELD
+    END-IF"
+16,16,EVALUATE,BUSINESS_RULE_CANDIDATE,Kundenname basierend auf Kontonummer zuweisen,Das Muster weist einer Kundenbezeichnung basierend auf der Kontonummer einen festen Namen zu. Es handelt sich um eine direkte Zuordnung von Kundenname zu spezifischer Kontonummer. Keine weiteren Verzweigungen oder Prüfungen sind enthalten.,"Quelltextbeleg 1:
+EVALUATE ACCOUNT-NUMBER-IN
+    WHEN '0001' MOVE 'Pradeep Gohil' TO CUSTOMER-NAME
+END-EVALUATE
+
+Quelltextbeleg 2:
+EVALUATE ACCOUNT-NUMBER-IN
+    WHEN '0002' MOVE 'Chris Poole' TO CUSTOMER-NAME
+END-EVALUATE
+
+Quelltextbeleg 3:
+EVALUATE ACCOUNT-NUMBER-IN
+    WHEN '0003' MOVE 'Jenny He' TO CUSTOMER-NAME
+END-EVALUATE"
+17,17,IF,CONTROL_FLOW_TEMPLATE,Technische Ablaufsteuerung bei Datenbankverbindung,Das Muster prüft eine Initialisierungsbedingung und führt bei Erfolg eine Verbindungsroutine aus. Anschließend wird bei erfolgreicher Datenbankverbindung eine Reihe von Datenverarbeitungs- und Trennungsroutinen ausgeführt. Es handelt sich um eine technische Ablaufsteuerung basierend auf Verbindungsstatus.,"Quelltextbeleg 1:
+IF is-valid-init
+         PERFORM B0200-connect
+         IF is-db-connected
+             PERFORM B0300-Get-Lookup-Data
+             PERFORM B0400-List-Users
+             PERFORM Z0200-Disconnect
+         END-IF
+     END-IF"
+18,18,EVALUATE,CONTROL_FLOW_TEMPLATE,Auswahl und Ausführung einer Verarbeitungsroutine,Das Muster führt bei einem bestimmten Optionswert eine spezifische Verarbeitungsroutine aus. Es handelt sich um eine einfache Auswahl basierend auf einem festen Wert. Keine weiteren Verzweigungen oder Prüfungen sind enthalten.,"Quelltextbeleg 1:
+EVALUATE WRK-OPCAO
+    WHEN 2 PERFORM 6000-CONSULTAR
+END-EVALUATE"
+19,19,IF,IDIOM_PATTERN,Numerische Grenzprüfung mit identischer Aktion,Das Muster prüft eine numerische Grenze und führt in beiden Fällen dieselbe Datenbewegung aus. Die Bedingung beeinflusst keine unterschiedliche fachliche Verarbeitung. Die Anweisung nach der Prüfung ist identisch.,"Quelltextbeleg 1:
+IF EIBCALEN < 91 THEN
+        MOVE DFHCOMMAREA TO CA-DATA
+DISPLAY ""EXEC_BLOCK_STUB""
+      ELSE
+        MOVE DFHCOMMAREA TO CA-DATA
+DISPLAY ""EXEC_BLOCK_STUB""
+      END-IF"
+20,20,IF,DATA_VALIDATION,Eingabelängenprüfung mit Rückgabecode,"Prüft, ob eine Länge kleiner als ein erforderlicher Wert ist und setzt bei Bedarf einen Rückgabecode. Diese Regel dient der Erkennung unzureichender Eingabelängen. Es handelt sich um eine einfache Validierung der Eingabedatenlänge.","Quelltextbeleg 1:
+IF EIBCALEN IS LESS THAN WS-REQUIRED-CA-LEN
+      MOVE '98' TO CA-RETURN-CODE
+DISPLAY ""EXEC_BLOCK_STUB""
+    END-IF
+
+Quelltextbeleg 2:
+IF EIBCALEN IS LESS THAN WS-REQUIRED-CA-LEN
+          MOVE '98' TO CA-RETURN-CODE
+DISPLAY ""EXEC_BLOCK_STUB""
+        END-IF
+
+Quelltextbeleg 3:
+IF EIBCALEN IS LESS THAN WS-CA-HEADER-LEN
+      MOVE '98' TO CA-RETURN-CODE
+DISPLAY ""EXEC_BLOCK_STUB""
+    END-IF"
+21,21,IF,BUSINESS_RULE_CANDIDATE,Berechnung bei fehlendem Rückgabefehler,"Wenn kein Rückgabefehler vorliegt, wird eine binäre Zahl aus zwei Komponenten berechnet. Die Prüfung auf Leerzeichen signalisiert das Fehlen eines Fehlers. Die Berechnung erfolgt nur bei fehlerfreiem Zustand.","Quelltextbeleg 1:
+IF EPSPARM-RETURN-ERROR = SPACES
+       COMPUTE EPSPARM-BINARY-NUMBER = EPSPARM-NUMBER
+                                     + EPSPARM-DECIMAL
+    END-IF"
+22,22,IF,DATA_VALIDATION,Prüfung auf ungültige Zeichenkombination,"Prüft, ob ein Wert einem bestimmten Zeichen entspricht und ein anderer Wert ein anderes Zeichen nicht hat. Bei erfüllter Bedingung wird ein Fehlerindikator gesetzt. Dies dient der Erkennung eines ungültigen Zustands.","Quelltextbeleg 1:
+IF X = '>' AND Y <> '<' THEN
+          MOVE 1 TO WRONG
+        END-IF"
+23,23,IF,IDIOM_PATTERN,Bedingte Pfadzuweisung bei Längenprüfung,"Prüft, ob eine Längenangabe größer als Null ist, und überträgt dann einen Pfadwert. Diese Struktur dient zur bedingten Zuweisung basierend auf der Existenz eines Pfades. Es handelt sich um eine einfache Prüfung und Wertzuweisung.","Quelltextbeleg 1:
+IF  URI-PATH-LENGTH GREATER THAN ZEROES
+        MOVE WEB-PATH
+        TO   URI-KEY"
+24,24,IF,BUSINESS_RULE_CANDIDATE,Indexzuweisung nach Bereichsprüfung,Das Muster weist einem Indexwert je nach erfüllter Bereichsbedingung einen Wert zwischen 2 und 5 zu. Es erfolgt eine gestaffelte Prüfung mehrerer Bereichsflags. Die Zuordnung dient der Auswahl eines Bereichsindex basierend auf Bereichskennzeichen.,"Quelltextbeleg 1:
+IF S-RANGE2
+            SET SALES-IX TO 2
+        ELSE
+            IF S-RANGE3
+                SET SALES-IX TO 3
+            ELSE
+                IF S-RANGE4
+                    SET SALES-IX TO 4
+                ELSE
+                    SET SALES-IX TO 5
+
+Quelltextbeleg 2:
+IF M-RANGE2
+            SET MGMT-IX TO 2
+        ELSE
+            IF M-RANGE3
+                SET MGMT-IX TO 3
+            ELSE
+                IF M-RANGE4
+                    SET MGMT-IX TO 4
+                ELSE
+                    SET MGMT-IX TO 5"
+25,25,EVALUATE,BUSINESS_RULE_CANDIDATE,Ergebnisbasierte Status- und Steuerungszuweisung,"Das Muster wertet ein Ergebnis aus und setzt daraufhin eine Statusnachricht, einen Statuscode und einen Steuerungsflag. Es handelt sich um eine Zuordnung von Ergebniszuständen zu entsprechenden Meldungen und Steuerungsaktionen. Die Struktur zeigt eine einfache Ergebnisverarbeitung ohne weitere Verzweigungen.","Quelltextbeleg 1:
+EVALUATE WS-MOVE-OUTCOME
+    WHEN ""WIN"" MOVE ""WINNER (^-^)"" TO WS-MESSAGE MOVE ""WIN"" TO WS-STATE SET WS-SWAP-PLAYERS TO 1
+END-EVALUATE
+
+Quelltextbeleg 2:
+EVALUATE WS-MOVE-OUTCOME
+    WHEN ""LOSE"" MOVE ""YOU DIED"" TO WS-MESSAGE MOVE ""LOSE"" TO WS-STATE SET WS-SWAP-PLAYERS TO 1
+END-EVALUATE"
+26,26,IF,BUSINESS_RULE_CANDIDATE,ASCII-Zeichen zu ASCII-Code Zuordnung,"Diese Regel ordnet für verschiedene ASCII-Zeichen jeweils den entsprechenden ASCII-Code zu. Wenn kein bekannter ASCII-Zeichenstatus vorliegt, wird der Wert eines String-Feldes übernommen. Die Struktur dient der Zuordnung von Zeichen zu ihren numerischen Codes.","Quelltextbeleg 1:
+IF ASCII-SPC THEN
+    MOVE 32 TO CHAR-CODE
+ELSE IF ASCII-EXC THEN
+    MOVE 33 TO CHAR-CODE
+ELSE IF ASCII-DBQT THEN
+    MOVE 34 TO CHAR-CODE
+ELSE IF ASCII-PND THEN
+    MOVE 35 TO CHAR-CODE
+ELSE IF ASCII-DLR THEN
+    MOVE 36 TO CHAR-CODE
+ELSE IF ASCII-PCNT THEN
+    MOVE 37 TO CHAR-CODE
+ELSE IF ASCII-AMP THEN
+    MOVE 38 TO CHAR-CODE
+ELSE IF ASCII-SGQT THEN
+    MOVE 39 TO CHAR-CODE
+ELSE IF ASCII-LPRN THEN
+    MOVE 40 TO CHAR-CODE
+ELSE IF ASCII-RPRN THEN
+    MOVE 41 TO CHAR-CODE
+ELSE IF ASCII-STAR THEN
+    MOVE 42 TO CHAR-CODE
+ELSE IF ASCII-PLUS THEN
+    MOVE 43 TO CHAR-CODE
+ELSE IF ASCII-COMA THEN
+    MOVE 44 TO CHAR-CODE
+ELSE IF ASCII-DASH THEN
+    MOVE 45 TO CHAR-CODE
+ELSE IF ASCII-DOT THEN
+    MOVE 46 TO CHAR-CODE
+ELSE IF ASCII-SLSH THEN
+    MOVE 47 TO CHAR-CODE
+ELSE IF ASCII-NUM0 THEN
+    MOVE 48 TO CHAR-CODE
+ELSE IF ASCII-NUM1 THEN
+    MOVE 49 TO CHAR-CODE
+ELSE IF ASCII-NUM2 THEN
+    MOVE 50 TO CHAR-CODE
+ELSE IF ASCII-NUM3 THEN
+    MOVE 51 TO CHAR-CODE
+ELSE IF ASCII-NUM4 THEN
+    MOVE 52 TO CHAR-CODE
+ELSE IF ASCII-NUM5 THEN
+    MOVE 53 TO CHAR-CODE
+ELSE IF ASCII-NUM6 THEN
+    MOVE 54 TO CHAR-CODE
+ELSE IF ASCII-NUM7 THEN
+    MOVE 55 TO CHAR-CODE
+ELSE IF ASCII-NUM8 THEN
+    MOVE 56 TO CHAR-CODE
+ELSE IF ASCII-NUM9 THEN
+    MOVE 57 TO CHAR-CODE
+ELSE IF ASCII-COLN THEN
+    MOVE 58 TO CHAR-CODE
+ELSE IF ASCII-SCLN THEN
+    MOVE 59 TO CHAR-CODE
+ELSE IF ASCII-LESS THEN
+    MOVE 60 TO CHAR-CODE
+ELSE IF ASCII-EQL THEN
+    MOVE 61 TO CHAR-CODE
+ELSE IF ASCII-GRTR THEN
+    MOVE 62 TO CHAR-CODE
+ELSE IF ASCII-QUES THEN
+    MOVE 63 TO CHAR-CODE
+ELSE IF ASCII-AT THEN
+    MOVE 64 TO CHAR-CODE
+ELSE IF ASCII-LETA THEN
+    MOVE 65 TO CHAR-CODE
+ELSE IF ASCII-LETB THEN
+    MOVE 66 TO CHAR-CODE
+ELSE IF ASCII-LETC THEN
+    MOVE 67 TO CHAR-CODE
+ELSE IF ASCII-LETD THEN
+    MOVE 68 TO CHAR-CODE
+ELSE IF ASCII-LETE THEN
+    MOVE 69 TO CHAR-CODE
+ELSE IF ASCII-LETF THEN
+    MOVE 70 TO CHAR-CODE
+ELSE IF ASCII-LETG THEN
+    MOVE 71 TO CHAR-CODE
+ELSE IF ASCII-LETH THEN
+    MOVE 72 TO CHAR-CODE
+ELSE IF ASCII-LETI THEN
+    MOVE 73 TO CHAR-CODE
+ELSE IF ASCII-LETJ THEN
+    MOVE 74 TO CHAR-CODE
+ELSE IF ASCII-LETK THEN
+    MOVE 75 TO CHAR-CODE
+ELSE IF ASCII-LETL THEN
+    MOVE 76 TO CHAR-CODE
+ELSE IF ASCII-LETM THEN
+    MOVE 77 TO CHAR-CODE
+ELSE IF ASCII-LETN THEN
+    MOVE 78 TO CHAR-CODE
+ELSE IF ASCII-LETO THEN
+    MOVE 79 TO CHAR-CODE
+ELSE IF ASCII-LETP THEN
+    MOVE 80 TO CHAR-CODE
+ELSE IF ASCII-LETQ THEN
+    MOVE 81 TO CHAR-CODE
+ELSE IF ASCII-LETR THEN
+    MOVE 82 TO CHAR-CODE
+ELSE IF ASCII-LETS THEN
+    MOVE 83 TO CHAR-CODE
+ELSE IF ASCII-LETT THEN
+    MOVE 84 TO CHAR-CODE
+ELSE IF ASCII-LETU THEN
+    MOVE 85 TO CHAR-CODE
+ELSE IF ASCII-LETV THEN
+    MOVE 86 TO CHAR-CODE
+ELSE IF ASCII-LETW THEN
+    MOVE 87 TO CHAR-CODE
+ELSE IF ASCII-LETX THEN
+    MOVE 88 TO CHAR-CODE
+ELSE IF ASCII-LETY THEN
+    MOVE 89 TO CHAR-CODE
+ELSE IF ASCII-LETZ THEN
+    MOVE 90 TO CHAR-CODE
+ELSE IF ASCII-LSQB THEN
+    MOVE 91 TO CHAR-CODE
+ELSE IF ASCII-BKSL THEN
+    MOVE 92 TO CHAR-CODE
+ELSE IF ASCII-RSQB THEN
+    MOVE 93 TO CHAR-CODE
+ELSE IF ASCII-CRT THEN
+    MOVE 94 TO CHAR-CODE
+ELSE IF ASCII-UNDS THEN
+    MOVE 95 TO CHAR-CODE
+ELSE IF ASCII-BKTK THEN
+    MOVE 96 TO CHAR-CODE
+ELSE IF ASCII-LOWA THEN
+    MOVE 97 TO CHAR-CODE
+ELSE IF ASCII-LOWB THEN
+    MOVE 98 TO CHAR-CODE
+ELSE IF ASCII-LOWC THEN
+    MOVE 99 TO CHAR-CODE
+ELSE IF ASCII-LOWD THEN
+    MOVE 100 TO CHAR-CODE
+ELSE IF ASCII-LOWE THEN
+    MOVE 101 TO CHAR-CODE
+ELSE IF ASCII-LOWF THEN
+    MOVE 102 TO CHAR-CODE
+ELSE IF ASCII-LOWG THEN
+    MOVE 103 TO CHAR-CODE
+ELSE IF ASCII-LOWH THEN
+    MOVE 104 TO CHAR-CODE
+ELSE IF ASCII-LOWI THEN
+    MOVE 105 TO CHAR-CODE
+ELSE IF ASCII-LOWJ THEN
+    MOVE 106 TO CHAR-CODE
+ELSE IF ASCII-LOWK THEN
+    MOVE 107 TO CHAR-CODE
+ELSE IF ASCII-LOWL THEN
+    MOVE 108 TO CHAR-CODE
+ELSE IF ASCII-LOWM THEN
+    MOVE 109 TO CHAR-CODE
+ELSE IF ASCII-LOWN THEN
+    MOVE 110 TO CHAR-CODE
+ELSE IF ASCII-LOWO THEN
+    MOVE 111 TO CHAR-CODE
+ELSE IF ASCII-LOWP THEN
+    MOVE 112 TO CHAR-CODE
+ELSE IF ASCII-LOWQ THEN
+    MOVE 113 TO CHAR-CODE
+ELSE IF ASCII-LOWR THEN
+    MOVE 114 TO CHAR-CODE
+ELSE IF ASCII-LOWS THEN
+    MOVE 115 TO CHAR-CODE
+ELSE IF ASCII-LOWT THEN
+    MOVE 116 TO CHAR-CODE
+ELSE IF ASCII-LOWU THEN
+    MOVE 117 TO CHAR-CODE
+ELSE IF ASCII-LOWV THEN
+    MOVE 118 TO CHAR-CODE
+ELSE IF ASCII-LOWW THEN
+    MOVE 119 TO CHAR-CODE
+ELSE IF ASCII-LOWX THEN
+    MOVE 120 TO CHAR-CODE
+ELSE IF ASCII-LOWY THEN
+    MOVE 121 TO CHAR-CODE
+ELSE IF ASCII-LOWZ THEN
+    MOVE 122 TO CHAR-CODE
+ELSE IF ASCII-LCRB THEN
+    MOVE 123 TO CHAR-CODE
+ELSE IF ASCII-PIPE THEN
+    MOVE 124 TO CHAR-CODE
+ELSE IF ASCII-RCRB THEN
+    MOVE 125 TO CHAR-CODE
+ELSE IF ASCII-TLDE THEN
+    MOVE 126 TO CHAR-CODE
+ELSE IF ASCII-DEL THEN
+    MOVE 127 TO CHAR-CODE
+ELSE MOVE COBOL-STRING TO CHAR-CODE"
+27,27,IF,CONTROL_FLOW_TEMPLATE,Steuerung der Web-Verbindung nach Betriebsmodus,"Das Muster prüft, ob der Datentyp einem der beiden aktiven Betriebsmodi entspricht. Bei Übereinstimmung wird eine Web-Verbindung geschlossen. Es handelt sich um eine Steuerung der Web-Verarbeitung basierend auf dem Betriebsmodus.","Quelltextbeleg 1:
+IF  DC-TYPE EQUAL ACTIVE-ACTIVE
+    OR  DC-TYPE EQUAL ACTIVE-STANDBY
+        PERFORM 7300-WEB-CLOSE         THRU 7300-EXIT"
+28,28,EVALUATE,CONTROL_FLOW_TEMPLATE,Steuerung der Dateilesung nach Anfragetyp,Das Muster prüft den Anfragetyp auf einen bestimmten Wert und führt bei Übereinstimmung eine Datei-Leseoperation aus. Es handelt sich um eine einfache Steuerung basierend auf dem Anfragetyp. Kein weiterer Verarbeitungszweig ist definiert.,"Quelltextbeleg 1:
+EVALUATE LS-REQUEST-TYPE
+    WHEN 'R' PERFORM 500-READ-FILE
+END-EVALUATE"
+29,29,IF,DATA_VALIDATION,Prüfung auf leere oder nicht numerische Eingabe,"Das Muster prüft, ob ein Eingabewert leer oder nicht numerisch ist. Bei fehlerhafter Eingabe wird eine Fehlerstruktur gesetzt und ein Zähler auf Null gesetzt. Bei gültiger Eingabe wird der Wert übernommen und ein Zähler entsprechend angepasst.","Quelltextbeleg 1:
+IF EPSPARM-VALIDATE-DATA = SPACE
+       OR EPSPARM-VALIDATE-DATA IS NOT NUMERIC
+          MOVE STATIC-ERROR-TABLE TO EPSPARM-RETURN-ERROR
+          MOVE 0 TO WS-IDX
+       ELSE
+          MOVE EPSPARM-VALIDATE-DATA TO
+               EPSPARM-NUMBER
+          SUBTRACT 1 FROM WS-IDX
+                          WS-NUM-IDX
+       END-IF"
+30,30,EVALUATE,IDIOM_PATTERN,Technische Statusbehandlung mit Programmabbruch,"Das Muster behandelt einen Statuswert mit einem Standardfall, der einen Rückgabecode setzt und das Programm beendet. Es dient zur technischen Fehlerbehandlung bei unerwarteten Statuswerten. Eine fachliche Entscheidung ist nicht erkennbar.","Quelltextbeleg 1:
+EVALUATE ws-ledger-status
+    WHEN OTHER MOVE 101 TO RETURN-CODE STOP RUN
+END-EVALUATE"

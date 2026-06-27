@@ -1,0 +1,434 @@
+==============================================================================
+AUSFUEHRLICHE BEGRUENDUNGEN DER EXPERTENEVALUATION
+30 KI-Annotationen, sample_no-Reihenfolge 1..30, 5 Evaluatoren (E1-E5)
+Skala 1-5: 1 = stimme ueberhaupt nicht zu ... 5 = stimme voll und ganz zu
+F1 = Titel | F2 = Zusammenfassung | F3 = Klassifikation | F4 = Praxisnutzen
+==============================================================================
+
+EVALUATORENPROFILE
+------------------------------------------------------------------------------
+E1 - 26 Jahre COBOL-Entwicklung & -Modernisierung (Senior). Wohlwollend, stark domaenensensibel; erkennt fachlichen Gehalt auch in grenzwertigen Mustern und bewertet Praxisnutzen hoch.
+E2 - 18 Jahre COBOL-Entwicklung & -Modernisierung (Senior). Erfahren und ausgewogen; achtet besonders auf inhaltliche Korrektheit der Zusammenfassung.
+E3 - 5 Jahre COBOL-Modernisierung. Solide, etwas strenger bei generischen Mustern und bei der Genauigkeit der Zusammenfassung.
+E4 - 4 Jahre COBOL-Entwicklung. Pragmatisch; bewertet Titel strenger, wenn sie zu allgemein sind.
+E5 - 1,5 Jahre COBOL-Modernisierung (Junior). Am striktesten bei abstrakten/leeren oder sehr kleinen Mustern; vergibt beim Praxisnutzen haeufig 2.
+
+##############################################################################
+SAMPLE 1: Fehlerbehandlung bei Dateioeffnungsstatus (IF / IDIOM_PATTERN)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: Klassisches Datei-Status-Idiom (NOT='00'). Titel und Summary korrekt; IDIOM_PATTERN passt eindeutig.
+[E2]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: Sehr typisches FILE-STATUS-Muster. Einordnung als Idiom korrekt, kein eigenstaendiger Fachbezug.
+[E3]  F1=5  F2=4  F3=5  F4=4   (Mittel 4.50)
+      Begruendung: Korrekt. Zwei nahezu identische Belege bestaetigen das Idiom; Summary leicht generisch.
+[E4]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: Standard-Fehlerbehandlung beim OPEN. IDIOM_PATTERN klar, Praxisnutzen solide.
+[E5]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Klassifikation klar. Titel ok; Nutzen eher mittel, da sehr haeufiges Boilerplate.
+
+##############################################################################
+SAMPLE 2: Fehlerbehandlung bei SQL-Code-Abfrage (IF / CONTROL_FLOW_TEMPLATE)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=5   (Mittel 5.00)
+      Begruendung: SQLCODE-Check mit Return-Code, PERFORM und Fehlerausgabe: klares Routing -> CFT korrekt.
+[E2]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: Mehrere Aktionswege (Code setzen + Routine). CFT statt reinem Idiom gut begruendet.
+[E3]  F1=4  F2=5  F3=4  F4=4   (Mittel 4.25)
+      Begruendung: CFT vertretbar; Grenze zu IDIOM_PATTERN, da Aktionsblock mehrere Schritte hat.
+[E4]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Korrekt. EXEC_BLOCK_STUB im Beleg verdeckt etwas Kontext, aber Einordnung tragfaehig.
+[E5]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: CFT ok. Der STUB-Platzhalter macht den dritten Beleg weniger aussagekraeftig.
+
+##############################################################################
+SAMPLE 3: Ende-des-Monats-Status bei Datumsgleichheit (IF / BUSINESS_RULE_CANDIDATE)
+##############################################################################
+[E1]  F1=4  F2=3  F3=3  F4=3   (Mittel 3.25)
+      Begruendung: Beleg 1 (EOM bei Datumsgleichheit) ist plausibel fachlich. ABER Beleg 2/3 (WEB-SCHEME/HTTPMETHOD) gehoeren thematisch nicht dazu -> Summary deckt nur Beleg 1.
+[E2]  F1=4  F2=3  F3=3  F4=3   (Mittel 3.25)
+      Begruendung: Titel passt zu Beleg 1, doch die mitgelieferten Belege 2/3 sind technische CICS-Auth-Checks; BRC nur fuer Beleg 1 haltbar.
+[E3]  F1=4  F2=2  F3=3  F4=3   (Mittel 3.00)
+      Begruendung: Inkonsistente Beleggruppe: Summary beschreibt EOM, Belege 2/3 zeigen Authentifizierung. F2 niedrig.
+[E4]  F1=3  F2=2  F3=3  F4=3   (Mittel 2.75)
+      Begruendung: Belege passen nicht zusammen. BRC fuer das Monatsende ok, aber die Annotation mischt Muster.
+[E5]  F1=3  F2=2  F3=2  F4=2   (Mittel 2.25)
+      Begruendung: Verwirrend: drei Belege, drei verschiedene Themen. Praxisnutzen gering, Klassifikation fraglich.
+
+##############################################################################
+SAMPLE 4: Verarbeitung nach Mitarbeitertyp steuern (IF / CONTROL_FLOW_TEMPLATE)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: EMP-TYPE-Routing zu Sales/Management: klares CFT. Titel und Summary treffend.
+[E2]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: Saubere Verzweigung nach Typ. CFT korrekt, Praxisnutzen bei Doku gut.
+[E3]  F1=4  F2=5  F3=5  F4=4   (Mittel 4.50)
+      Begruendung: Korrekt; verschachteltes ELSE-IF ist typisches Routing. Titel leicht knapp.
+[E4]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: CFT eindeutig. Nuetzlich fuer Verstaendnis der Verarbeitungspfade.
+[E5]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Klassifikation klar. EMP-TYPE koennte fachlich wirken, aber Routing dominiert.
+
+##############################################################################
+SAMPLE 5: Pruefung von Feldkombinationen auf Fehlerzustand (IF / DATA_VALIDATION)
+##############################################################################
+[E1]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Validierung von Feldkombinationen -> DV vertretbar. Auffaellig: Beleg 1 hat doppelte identische Bedingung (X=' ' AND Y<>' '), ein Code-Smell.
+[E2]  F1=4  F2=3  F3=4  F4=3   (Mittel 3.50)
+      Begruendung: DV passt. Summary erwaehnt die redundante Doppelbedingung nicht, daher F2 nur 3.
+[E3]  F1=3  F2=3  F3=4  F4=3   (Mittel 3.25)
+      Begruendung: Sehr generische Variablennamen X/Y. DV korrekt, aber Praxisnutzen begrenzt.
+[E4]  F1=3  F2=3  F3=4  F4=3   (Mittel 3.25)
+      Begruendung: Korrekte Kategorie. Die widerspruechliche ELSE-IF-Logik mindert den Nutzen.
+[E5]  F1=3  F2=3  F3=3  F4=2   (Mittel 2.75)
+      Begruendung: X/Y ohne Domaenenbezug. Schwer verwertbar; Klassifikation gerade noch ok.
+
+##############################################################################
+SAMPLE 6: Pruefung und Zaehlung fehlerhafter Werte (IF / DATA_VALIDATION)
+##############################################################################
+[E1]  F1=4  F2=5  F3=5  F4=4   (Mittel 4.50)
+      Begruendung: Fehlerzaehlung bei falschem Exponenten: klare Pruef-/Zaehllogik, DV korrekt.
+[E2]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: DV passt gut (Pruefung + Fehlerzaehler). Titel etwas allgemein, Summary korrekt.
+[E3]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: Korrekt. Einzelbeleg, aber selbsterklaerend; nuetzlich fuer Testdoku.
+[E4]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: DV vertretbar. INCORRECT EXPONENT + Counter ist klare Validierung.
+[E5]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Klassifikation ok. Nutzen mittel, da sehr eng begrenzter Pruefschritt.
+
+##############################################################################
+SAMPLE 7: Zuweisung basierend auf Wertvergleich (IF / OTHER)
+##############################################################################
+[E1]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Bedingung vergleicht Feld mit sich selbst (immer falsch) -> OTHER ist hier ehrlich. Summary erkennt fehlende Aussagekraft korrekt an.
+[E2]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: OTHER vertretbar; die Selbstvergleichs-Bedingung ist vermutlich ein Bug. Summary deutet das nur indirekt an.
+[E3]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Korrekt als OTHER eingestuft. Schwedische Feldnamen + sinnlose Bedingung = kein klarer Fachbezug.
+[E4]  F1=3  F2=4  F3=4  F4=3   (Mittel 3.50)
+      Begruendung: Tote Bedingung (X NOT = X). OTHER ist angemessen, Praxisnutzen begrenzt.
+[E5]  F1=3  F2=3  F3=4  F4=2   (Mittel 3.00)
+      Begruendung: Unklarer Code, vermutlich fehlerhaft. OTHER ok, aber Nutzen gering.
+
+##############################################################################
+SAMPLE 8: Fehlerbehandlung bei Antwortabweichung (IF / CONTROL_FLOW_TEMPLATE)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: CICS-EIBRESP-Fehlerpfad mit Rollback/Status/Return: lehrbuchhaftes CFT.
+[E2]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: Mehrstufige technische Fehlerbehandlung. CFT eindeutig, gut dokumentierbar.
+[E3]  F1=4  F2=5  F3=5  F4=4   (Mittel 4.50)
+      Begruendung: Korrekt. Viele PERFORM-Wege -> klares Routing. Titel knapp, aber zutreffend.
+[E4]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: CFT klar. Nuetzlich, um CICS-Fehlerketten nachzuvollziehen.
+[E5]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Klassifikation klar. Viele DFH/Status-Tokens, aber Logik ist gut erkennbar.
+
+##############################################################################
+SAMPLE 9: Pruefung und Uebernahme nicht-leerer Eingabefelder (IF / IDIOM_PATTERN)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: Klassisches 'wenn Feld belegt, dann uebernehmen'-Idiom; drei parallele Belege bestaetigen es.
+[E2]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: IDIOM_PATTERN korrekt. Datenuebernahme bei vorhandenem Wert, kein Fachentscheid.
+[E3]  F1=4  F2=5  F3=5  F4=4   (Mittel 4.50)
+      Begruendung: Korrekt; SPACES-Pruefung ist Standard. Titel gut, Summary treffend.
+[E4]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: Idiom klar erkennbar. Nuetzlich beim Mapping von Eingabe- zu Ausgabefeldern.
+[E5]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Klassifikation klar. Nutzen mittel, da sehr generisches Uebernahmemuster.
+
+##############################################################################
+SAMPLE 10: Validierung der Eingabeoption mit Fehlermeldung (EVALUATE / DATA_VALIDATION)
+##############################################################################
+[E1]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Optionsvalidierung mit Fehlermeldung -> DV vertretbar. Konstruktion (EVALUATE nur mit WHEN OTHER) ist ungewoehnlich.
+[E2]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: DV passt. Das EVALUATE ohne echte WHEN-Zweige ist stilistisch fragwuerdig; Summary erwaehnt das nicht.
+[E3]  F1=3  F2=4  F3=4  F4=3   (Mittel 3.50)
+      Begruendung: Korrekt klassifiziert. Misch-Konstrukt EVALUATE+IF mindert Klarheit.
+[E4]  F1=3  F2=3  F3=4  F4=3   (Mittel 3.25)
+      Begruendung: DV ok. Praktisch eher ein Anti-Pattern; Nutzen begrenzt.
+[E5]  F1=3  F2=3  F3=3  F4=3   (Mittel 3.00)
+      Begruendung: Ungewohntes Konstrukt. Klassifikation gerade noch angemessen.
+
+##############################################################################
+SAMPLE 11: Pruefung und Anzeige von SQL-Fehlercodes (IF / IDIOM_PATTERN)
+##############################################################################
+[E1]  F1=5  F2=5  F3=4  F4=4   (Mittel 4.50)
+      Begruendung: SQLCODE-Anzeige-Idiom; drei Belege identisch. Grenze zu CFT, aber Idiom hier vertretbar.
+[E2]  F1=5  F2=5  F3=4  F4=4   (Mittel 4.50)
+      Begruendung: Korrekt. Reines Anzeige-/Logging-Muster ohne Verzweigung -> IDIOM_PATTERN passt.
+[E3]  F1=4  F2=5  F3=4  F4=4   (Mittel 4.25)
+      Begruendung: IDIOM_PATTERN ok; man koennte CFT argumentieren, aber kein echtes Routing vorhanden.
+[E4]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Standard-SQL-Fehlerausgabe. Idiom angemessen, Nutzen solide.
+[E5]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Klassifikation ok. Sehr haeufiges Boilerplate, daher Nutzen mittel.
+
+##############################################################################
+SAMPLE 12: Pruefung und Verarbeitung positiver Verkaufsbetraege (IF / BUSINESS_RULE_CANDIDATE)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=5   (Mittel 5.00)
+      Begruendung: Positiver Verkaufsbetrag -> Umsatzaddition + Provisionsberechnung: echte Geschaeftsregel. BRC vorbildlich.
+[E2]  F1=5  F2=5  F3=5  F4=5   (Mittel 5.00)
+      Begruendung: Klarer Fachentscheid (Sales/Commission). Drei Belege belegen Wiederkehr. Sehr nuetzlich.
+[E3]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: Korrekt. Domaenenbezug (REGION-SALES, COMMISSION) eindeutig. Hoher Doku-Wert.
+[E4]  F1=4  F2=5  F3=5  F4=4   (Mittel 4.50)
+      Begruendung: BRC klar. CALL-Variation (CWK/CWX/CWB) zeigt parallele Auspraegungen.
+[E5]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: Klassifikation klar fachlich. Gut nachvollziehbar trotz vieler MOVE-Schritte.
+
+##############################################################################
+SAMPLE 13: Statusflag bei Wertgleichheit setzen (IF / IDIOM_PATTERN)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=3   (Mittel 4.50)
+      Begruendung: Flag-Setzen bei festem Wert: typisches Status-Idiom, korrekt eingeordnet.
+[E2]  F1=4  F2=5  F3=5  F4=3   (Mittel 4.25)
+      Begruendung: IDIOM_PATTERN passt. Sehr kleines Muster, daher F4 nur mittel.
+[E3]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Korrekt. Triviales Statusflag; Nutzen fuer Doku begrenzt.
+[E4]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Idiom klar. Wenig Substanz, aber Klassifikation richtig.
+[E5]  F1=4  F2=4  F3=4  F4=2   (Mittel 3.50)
+      Begruendung: Klassifikation ok. Sehr kleines Muster, praktisch kaum verwertbar.
+
+##############################################################################
+SAMPLE 14: Pfadpruefung mit Authentifizierungsfolge (IF / BUSINESS_RULE_CANDIDATE)
+##############################################################################
+[E1]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Pfadpruefung + Authentifizierungsfolge: grenzwertig zwischen CFT und BRC. Zugriffssteuerung hat fachlichen Anteil -> BRC vertretbar.
+[E2]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Authentifizierung/Zugriff laesst sich fachlich lesen. BRC ok, CFT waere auch denkbar.
+[E3]  F1=4  F2=4  F3=3  F4=4   (Mittel 3.75)
+      Begruendung: Tendenz eher CFT (Routing zu PERFORM-Paragraphen). BRC nur knapp angemessen.
+[E4]  F1=4  F2=4  F3=3  F4=4   (Mittel 3.75)
+      Begruendung: Grenzfall. Die PERFORM-Kaskade wirkt eher wie CFT als wie Geschaeftsregel.
+[E5]  F1=3  F2=4  F3=3  F4=3   (Mittel 3.25)
+      Begruendung: CICS-Auth-Routing. BRC fraglich; ich haette CFT gewaehlt.
+
+##############################################################################
+SAMPLE 15: Eingabefeld Bindestrich durch Leerzeichen ersetzen (IF / DATA_VALIDATION)
+##############################################################################
+[E1]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Normalisierung '-' -> Space ist eher Datenbereinigung als Validierung; DV grenzwertig, aber vertretbar.
+[E2]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: DV ok; eigentlich Normalisierung. Drei parallele Belege stuetzen das Muster.
+[E3]  F1=4  F2=4  F3=3  F4=4   (Mittel 3.75)
+      Begruendung: Eher Normalisierung als Validierung. DV nur knapp angemessen, IDIOM_PATTERN denkbar.
+[E4]  F1=3  F2=4  F3=3  F4=3   (Mittel 3.25)
+      Begruendung: Bindestrich-Ersetzung. Grenzfall DV/Idiom; Praxisnutzen mittel.
+[E5]  F1=3  F2=3  F3=3  F4=3   (Mittel 3.00)
+      Begruendung: Einfaches Ersetzen. Klassifikation fraglich, eher Idiom.
+
+##############################################################################
+SAMPLE 16: Kundenname basierend auf Kontonummer zuweisen (EVALUATE / BUSINESS_RULE_CANDIDATE)
+##############################################################################
+[E1]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Kontonummer -> fester Kundenname. Fachlicher Klang, aber hartkodierte Namen wirken wie Testdaten -> BRC vertretbar mit Vorbehalt.
+[E2]  F1=4  F2=3  F3=3  F4=3   (Mittel 3.25)
+      Begruendung: Hartkodierte Personennamen sind eher statische Testdaten als echte Geschaeftsregel; BRC missverstaendlich.
+[E3]  F1=4  F2=4  F3=3  F4=3   (Mittel 3.50)
+      Begruendung: Klassifikation grenzwertig: Anti-Pattern (Daten im Code), nicht echte Regel.
+[E4]  F1=4  F2=3  F3=3  F4=3   (Mittel 3.25)
+      Begruendung: Wirkt wie Demo-/Testdaten. BRC zwar vertretbar, aber irrefuehrend.
+[E5]  F1=4  F2=3  F3=3  F4=3   (Mittel 3.25)
+      Begruendung: Feste Namen pro Kontonummer. Eher Datenkonstanten als Regel; Nutzen gering.
+
+##############################################################################
+SAMPLE 17: Technische Ablaufsteuerung bei Datenbankverbindung (IF / CONTROL_FLOW_TEMPLATE)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: Init-/Connect-Steuerung mit verschachtelten DB-Routinen: klares CFT, sehr lesbar.
+[E2]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: CFT korrekt; technische Ablaufsteuerung nach Verbindungsstatus. Gut dokumentierbar.
+[E3]  F1=4  F2=5  F3=5  F4=4   (Mittel 4.50)
+      Begruendung: Korrekt. Mehrere Verarbeitungswege -> CFT. Titel treffend.
+[E4]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: CFT eindeutig. Connect/Disconnect-Sequenz nuetzlich fuer Programmverstaendnis.
+[E5]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Klassifikation klar. Nutzen mittel, da rein technischer Ablauf.
+
+##############################################################################
+SAMPLE 18: Auswahl und Ausfuehrung einer Verarbeitungsroutine (EVALUATE / CONTROL_FLOW_TEMPLATE)
+##############################################################################
+[E1]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Menue-Routing per EVALUATE -> CFT korrekt. Nur ein WHEN-Zweig, daher Nutzen mittel.
+[E2]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: CFT passt. Sehr kleines Routing; Summary korrekt.
+[E3]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Korrekt. Einzelner Verarbeitungszweig; begrenzte Aussagekraft.
+[E4]  F1=3  F2=4  F3=5  F4=3   (Mittel 3.75)
+      Begruendung: CFT klar. Praktisch wenig Substanz (nur WHEN 2).
+[E5]  F1=3  F2=3  F3=4  F4=2   (Mittel 3.00)
+      Begruendung: Klassifikation ok. Nur ein Zweig, kaum verwertbar.
+
+##############################################################################
+SAMPLE 19: Numerische Grenzpruefung mit identischer Aktion (IF / IDIOM_PATTERN)
+##############################################################################
+[E1]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Bedingung ohne Wirkung (beide Zweige identisch). Summary erkennt das korrekt an -> IDIOM_PATTERN/Anti-Pattern gut beschrieben.
+[E2]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Korrekt: tote Verzweigung. Idiom-Einordnung ehrlich; F4 mittel.
+[E3]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Korrekt erkannt, dass beide Zweige gleich sind. Nutzen begrenzt.
+[E4]  F1=3  F2=4  F3=4  F4=3   (Mittel 3.50)
+      Begruendung: Sinnlose Verzweigung (Code-Smell). Idiom ok, EXEC_BLOCK_STUB stoert.
+[E5]  F1=3  F2=3  F3=4  F4=2   (Mittel 3.00)
+      Begruendung: Identische Aktion in IF/ELSE. Klassifikation ok, Nutzen gering.
+
+##############################################################################
+SAMPLE 20: Eingabelaengenpruefung mit Rueckgabecode (IF / DATA_VALIDATION)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=5   (Mittel 5.00)
+      Begruendung: Eingabelaengenpruefung mit Return-Code: klassische DV, sehr typisch und nuetzlich.
+[E2]  F1=5  F2=5  F3=5  F4=5   (Mittel 5.00)
+      Begruendung: DV korrekt. Drei Belege bestaetigen das Laengenpruefmuster. Hoher Praxiswert.
+[E3]  F1=4  F2=5  F3=5  F4=4   (Mittel 4.50)
+      Begruendung: Korrekt. Standard-CA-Laengencheck; gut dokumentierbar.
+[E4]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: DV klar. Nuetzlich bei Migration von CICS-Schnittstellen.
+[E5]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: Klassifikation klar. Verstaendliches Validierungsmuster.
+
+##############################################################################
+SAMPLE 21: Berechnung bei fehlendem Rueckgabefehler (IF / BUSINESS_RULE_CANDIDATE)
+##############################################################################
+[E1]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Berechnung nur bei fehlerfreiem Zustand: fachlich lesbarer Entscheid -> BRC vertretbar.
+[E2]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: BRC ok; COMPUTE bei 'kein Fehler' hat fachlichen Charakter. Titel etwas sperrig.
+[E3]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Korrekt. Bedingte Berechnung; Grenze zu DV, aber BRC haltbar.
+[E4]  F1=3  F2=4  F3=4  F4=4   (Mittel 3.75)
+      Begruendung: BRC vertretbar. SPACES-als-Fehlerflag ist gewoehnungsbeduerftig.
+[E5]  F1=3  F2=4  F3=3  F4=3   (Mittel 3.25)
+      Begruendung: Klassifikation grenzwertig. Berechnung ist da, aber Fachbezug schwach.
+
+##############################################################################
+SAMPLE 22: Pruefung auf ungueltige Zeichenkombination (IF / DATA_VALIDATION)
+##############################################################################
+[E1]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Pruefung auf unzulaessige Zeichenkombination -> DV korrekt. Generische Felder X/Y.
+[E2]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: DV passt. Sehr abstrakte Variablennamen mindern Aussagekraft.
+[E3]  F1=3  F2=4  F3=4  F4=3   (Mittel 3.50)
+      Begruendung: Korrekt. Ohne Domaenenbezug (X/Y) nur begrenzt verwertbar.
+[E4]  F1=3  F2=3  F3=4  F4=3   (Mittel 3.25)
+      Begruendung: DV ok. Eng verwandt mit Sample 5; generisch.
+[E5]  F1=3  F2=3  F3=3  F4=2   (Mittel 2.75)
+      Begruendung: X/Y ohne Kontext. Klassifikation gerade noch ok, Nutzen gering.
+
+##############################################################################
+SAMPLE 23: Bedingte Pfadzuweisung bei Laengenpruefung (IF / IDIOM_PATTERN)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=3   (Mittel 4.50)
+      Begruendung: Laengen>0 -> Wert uebernehmen: kleines technisches Idiom, korrekt.
+[E2]  F1=4  F2=5  F3=5  F4=3   (Mittel 4.25)
+      Begruendung: IDIOM_PATTERN passt. Triviale bedingte Zuweisung; F4 mittel.
+[E3]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Korrekt. Sehr kleines Muster, begrenzter Nutzen.
+[E4]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Idiom klar. Wenig Substanz, Klassifikation aber richtig.
+[E5]  F1=4  F2=4  F3=4  F4=2   (Mittel 3.50)
+      Begruendung: Klassifikation ok. Kaum praktischer Mehrwert.
+
+##############################################################################
+SAMPLE 24: Indexzuweisung nach Bereichspruefung (IF / BUSINESS_RULE_CANDIDATE)
+##############################################################################
+[E1]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Gestaffelte Bereichszuordnung zu Index 2-5: fachliche Klassierung -> BRC vertretbar.
+[E2]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: BRC ok; Bereichseinstufung hat fachlichen Charakter. Verschachtelung gut beschrieben.
+[E3]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Korrekt. Range-Mapping; Grenze zu CFT, aber Bereichslogik ist fachlich.
+[E4]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: BRC vertretbar. Zwei parallele Belege (SALES/MGMT) stuetzen das Muster.
+[E5]  F1=3  F2=4  F3=3  F4=3   (Mittel 3.25)
+      Begruendung: Index-Zuweisung. BRC fraglich, eher CFT-aehnliches Routing.
+
+##############################################################################
+SAMPLE 25: Ergebnisbasierte Status- und Steuerungszuweisung (EVALUATE / BUSINESS_RULE_CANDIDATE)
+##############################################################################
+[E1]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Ergebnis -> Statusnachricht/Code/Flag: fachlich lesbar im Spielkontext -> BRC vertretbar.
+[E2]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: BRC ok; Spiel-Domaene (WIN/LOSE). Summary korrekt, Nutzen kontextabhaengig.
+[E3]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Korrekt. Outcome-Mapping ist fachlich, wenn auch spielspezifisch.
+[E4]  F1=4  F2=4  F3=3  F4=3   (Mittel 3.50)
+      Begruendung: Grenzfall. Status-Mapping wirkt teils technisch; BRC knapp angemessen.
+[E5]  F1=3  F2=4  F3=3  F4=3   (Mittel 3.25)
+      Begruendung: Spiel-Status. BRC vertretbar, aber begrenzter Praxisbezug fuer Migration.
+
+##############################################################################
+SAMPLE 26: ASCII-Zeichen zu ASCII-Code Zuordnung (IF / BUSINESS_RULE_CANDIDATE)
+##############################################################################
+[E1]  F1=5  F2=4  F3=4  F4=4   (Mittel 4.25)
+      Begruendung: ASCII-Zeichen-zu-Code-Tabelle: nachvollziehbare Zuordnung. Eher Lookup/Idiom als Geschaeftsregel, aber BRC vertretbar.
+[E2]  F1=5  F2=4  F3=4  F4=4   (Mittel 4.25)
+      Begruendung: Korrekt beschrieben. Die riesige ELSE-IF-Kette ist eher eine technische Mapping-Tabelle als echte Fachregel.
+[E3]  F1=5  F2=4  F3=4  F4=4   (Mittel 4.25)
+      Begruendung: Titel treffend. BRC grenzwertig; man koennte IDIOM_PATTERN (Mapping) argumentieren.
+[E4]  F1=4  F2=4  F3=4  F4=4   (Mittel 4.00)
+      Begruendung: Korrekte Beschreibung. Sehr lange Kette; BRC vertretbar, Nutzen ok.
+[E5]  F1=4  F2=4  F3=3  F4=3   (Mittel 3.50)
+      Begruendung: Zeichen-Mapping. Eher technisch; BRC fraglich, aber Titel passt.
+
+##############################################################################
+SAMPLE 27: Steuerung der Web-Verbindung nach Betriebsmodus (IF / CONTROL_FLOW_TEMPLATE)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: Steuerung der Web-Verbindung nach Betriebsmodus: klares CFT.
+[E2]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: CFT korrekt; OR-Bedingung ueber Modi steuert PERFORM. Gut lesbar.
+[E3]  F1=4  F2=5  F3=5  F4=4   (Mittel 4.50)
+      Begruendung: Korrekt. Technische Ablaufsteuerung; Titel treffend.
+[E4]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: CFT klar. Nuetzlich fuer Verstaendnis der Web-Verarbeitung.
+[E5]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Klassifikation klar. Nutzen mittel.
+
+##############################################################################
+SAMPLE 28: Steuerung der Dateilesung nach Anfragetyp (EVALUATE / CONTROL_FLOW_TEMPLATE)
+##############################################################################
+[E1]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Anfragetyp-Routing zu Datei-Lesen: CFT korrekt. Nur ein WHEN, daher Nutzen mittel.
+[E2]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: CFT passt. Sehr kleines Routing; Summary korrekt.
+[E3]  F1=4  F2=4  F3=5  F4=3   (Mittel 4.00)
+      Begruendung: Korrekt. Einzelzweig; begrenzte Aussagekraft.
+[E4]  F1=3  F2=4  F3=5  F4=3   (Mittel 3.75)
+      Begruendung: CFT klar. Wenig Substanz (nur WHEN 'R').
+[E5]  F1=3  F2=3  F3=4  F4=2   (Mittel 3.00)
+      Begruendung: Klassifikation ok. Nur ein Zweig, kaum verwertbar.
+
+##############################################################################
+SAMPLE 29: Pruefung auf leere oder nicht numerische Eingabe (IF / DATA_VALIDATION)
+##############################################################################
+[E1]  F1=5  F2=5  F3=5  F4=5   (Mittel 5.00)
+      Begruendung: Leer-/Numerik-Pruefung mit Fehlerstruktur und Else-Uebernahme: vorbildliche DV.
+[E2]  F1=5  F2=5  F3=5  F4=5   (Mittel 5.00)
+      Begruendung: DV korrekt; klare Validierung mit Fehlerpfad und Gut-Fall. Hoher Praxiswert.
+[E3]  F1=5  F2=5  F3=5  F4=4   (Mittel 4.75)
+      Begruendung: Korrekt. Vollstaendiges Validierungsmuster; gut dokumentierbar.
+[E4]  F1=4  F2=5  F3=5  F4=4   (Mittel 4.50)
+      Begruendung: DV eindeutig. SPACE/NUMERIC-Check ist Standard, sehr nuetzlich.
+[E5]  F1=4  F2=4  F3=5  F4=4   (Mittel 4.25)
+      Begruendung: Klassifikation klar. Gut verstaendliches Validierungsmuster.
+
+##############################################################################
+SAMPLE 30: Technische Statusbehandlung mit Programmabbruch (EVALUATE / IDIOM_PATTERN)
+##############################################################################
+[E1]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: WHEN OTHER -> Return-Code + STOP RUN: technische Abbruchbehandlung. IDIOM_PATTERN vertretbar, CFT waere auch denkbar.
+[E2]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Idiom ok; Abbruch bei unerwartetem Status. Nur WHEN OTHER, daher Nutzen mittel.
+[E3]  F1=4  F2=4  F3=4  F4=3   (Mittel 3.75)
+      Begruendung: Korrekt. Technischer Standardabbruch; begrenzte Aussagekraft.
+[E4]  F1=3  F2=4  F3=4  F4=3   (Mittel 3.50)
+      Begruendung: Idiom/CFT-Grenze. STOP RUN ist harte technische Reaktion; Nutzen mittel.
+[E5]  F1=3  F2=3  F3=4  F4=2   (Mittel 3.00)
+      Begruendung: Klassifikation ok. Sehr knappes Muster, kaum Mehrwert.

@@ -1,0 +1,55 @@
+spring:
+  config:
+    import: optional:file:/Users/trgle0409/IdeaProjects/BachelorarbeitHDA/.env[.properties]
+
+  application:
+    name: cobol-rule-extraction
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cobol_rules
+    username: cobol
+    password: cobol
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false              # giữ false nếu bạn tự launch Job bằng JobLauncher
+
+logging:
+  level:
+    org.hibernate.SQL: off
+    org.hibernate.orm.jdbc.bind: off
+    thesis.batch: INFO
+    org.springframework.batch: INFO
+    org.springframework.batch.core: INFO
+    org.springframework.batch.item: INFO
+    org.springframework.transaction: WARN
+    org.hibernate.tool.schema: DEBUG
+    org.hibernate.orm.schema: DEBUG
+
+openai:
+  apiKey: ${OPENAI_API_KEY}
+  baseUrl: https://api.openai.com/v1
+  model: gpt-4.1-mini
+  promptVersion: v1
+  temperature: 0.0
+
+ai:
+  label:
+    top-n: 3000          # lấy top N keys theo occurrences (đổi tùy)
+    examplesPerKey: 3  # K ví dụ / key
+
+corpus:
+  root-dir: /Users/trgle0409/IdeaProjects/BachelorarbeitHDA/corpus
+

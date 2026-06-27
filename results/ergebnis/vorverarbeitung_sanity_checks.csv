@@ -1,0 +1,15 @@
+check_name,total
+glued_exec_stub,0
+copy_stub_leaked,0
+exec_stub_in_condition,0
+metadata_errors,0
+function_errors,1
+display_parse_errors,2
+copy_parse_errors,0
+environment_errors,0
+input_output_errors,0
+false_is_errors,0
+comma_errors,0
+eof_errors,0
+standalone_sequence_errors,0
+lexer_errors,0

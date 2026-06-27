@@ -1,0 +1,151 @@
+﻿sample_no,evaluator,erfahrung,F1_titel,F2_zusammenfassung,F3_klassifikation,F4_praxisnutzen,mittelwert,kommentar
+1,E1,26 J. Entw./Modern.,5,5,5,4,"4,75",Klassisches Datei-Status-Idiom (NOT='00'). Titel und Summary korrekt; IDIOM_PATTERN passt eindeutig.
+1,E2,18 J. Entw./Modern.,5,5,5,4,"4,75","Sehr typisches FILE-STATUS-Muster. Einordnung als Idiom korrekt, kein eigenstaendiger Fachbezug."
+1,E3,5 J. Modern.,5,4,5,4,"4,50",Korrekt. Zwei nahezu identische Belege bestaetigen das Idiom; Summary leicht generisch.
+1,E4,4 J. Entw.,4,4,5,4,"4,25","Standard-Fehlerbehandlung beim OPEN. IDIOM_PATTERN klar, Praxisnutzen solide."
+1,E5,"1,5 J. Modern. (Junior)",4,4,5,3,"4,00","Klassifikation klar. Titel ok; Nutzen eher mittel, da sehr haeufiges Boilerplate."
+2,E1,26 J. Entw./Modern.,5,5,5,5,"5,00","SQLCODE-Check mit Return-Code, PERFORM und Fehlerausgabe: klares Routing -> CFT korrekt."
+2,E2,18 J. Entw./Modern.,5,5,5,4,"4,75",Mehrere Aktionswege (Code setzen + Routine). CFT statt reinem Idiom gut begruendet.
+2,E3,5 J. Modern.,4,5,4,4,"4,25","CFT vertretbar; Grenze zu IDIOM_PATTERN, da Aktionsblock mehrere Schritte hat."
+2,E4,4 J. Entw.,4,4,4,4,"4,00","Korrekt. EXEC_BLOCK_STUB im Beleg verdeckt etwas Kontext, aber Einordnung tragfaehig."
+2,E5,"1,5 J. Modern. (Junior)",4,4,4,3,"3,75",CFT ok. Der STUB-Platzhalter macht den dritten Beleg weniger aussagekraeftig.
+3,E1,26 J. Entw./Modern.,4,3,3,3,"3,25",Beleg 1 (EOM bei Datumsgleichheit) ist plausibel fachlich. ABER Beleg 2/3 (WEB-SCHEME/HTTPMETHOD) gehoeren thematisch nicht dazu -> Summary deckt nur Beleg 1.
+3,E2,18 J. Entw./Modern.,4,3,3,3,"3,25","Titel passt zu Beleg 1, doch die mitgelieferten Belege 2/3 sind technische CICS-Auth-Checks; BRC nur fuer Beleg 1 haltbar."
+3,E3,5 J. Modern.,4,2,3,3,"3,00","Inkonsistente Beleggruppe: Summary beschreibt EOM, Belege 2/3 zeigen Authentifizierung. F2 niedrig."
+3,E4,4 J. Entw.,3,2,3,3,"2,75","Belege passen nicht zusammen. BRC fuer das Monatsende ok, aber die Annotation mischt Muster."
+3,E5,"1,5 J. Modern. (Junior)",3,2,2,2,"2,25","Verwirrend: drei Belege, drei verschiedene Themen. Praxisnutzen gering, Klassifikation fraglich."
+4,E1,26 J. Entw./Modern.,5,5,5,4,"4,75",EMP-TYPE-Routing zu Sales/Management: klares CFT. Titel und Summary treffend.
+4,E2,18 J. Entw./Modern.,5,5,5,4,"4,75","Saubere Verzweigung nach Typ. CFT korrekt, Praxisnutzen bei Doku gut."
+4,E3,5 J. Modern.,4,5,5,4,"4,50",Korrekt; verschachteltes ELSE-IF ist typisches Routing. Titel leicht knapp.
+4,E4,4 J. Entw.,4,4,5,4,"4,25",CFT eindeutig. Nuetzlich fuer Verstaendnis der Verarbeitungspfade.
+4,E5,"1,5 J. Modern. (Junior)",4,4,5,3,"4,00","Klassifikation klar. EMP-TYPE koennte fachlich wirken, aber Routing dominiert."
+5,E1,26 J. Entw./Modern.,4,4,4,3,"3,75","Validierung von Feldkombinationen -> DV vertretbar. Auffaellig: Beleg 1 hat doppelte identische Bedingung (X=' ' AND Y<>' '), ein Code-Smell."
+5,E2,18 J. Entw./Modern.,4,3,4,3,"3,50","DV passt. Summary erwaehnt die redundante Doppelbedingung nicht, daher F2 nur 3."
+5,E3,5 J. Modern.,3,3,4,3,"3,25","Sehr generische Variablennamen X/Y. DV korrekt, aber Praxisnutzen begrenzt."
+5,E4,4 J. Entw.,3,3,4,3,"3,25",Korrekte Kategorie. Die widerspruechliche ELSE-IF-Logik mindert den Nutzen.
+5,E5,"1,5 J. Modern. (Junior)",3,3,3,2,"2,75",X/Y ohne Domaenenbezug. Schwer verwertbar; Klassifikation gerade noch ok.
+6,E1,26 J. Entw./Modern.,4,5,5,4,"4,50","Fehlerzaehlung bei falschem Exponenten: klare Pruef-/Zaehllogik, DV korrekt."
+6,E2,18 J. Entw./Modern.,4,4,5,4,"4,25","DV passt gut (Pruefung + Fehlerzaehler). Titel etwas allgemein, Summary korrekt."
+6,E3,5 J. Modern.,4,4,5,4,"4,25","Korrekt. Einzelbeleg, aber selbsterklaerend; nuetzlich fuer Testdoku."
+6,E4,4 J. Entw.,4,4,4,4,"4,00",DV vertretbar. INCORRECT EXPONENT + Counter ist klare Validierung.
+6,E5,"1,5 J. Modern. (Junior)",4,4,4,3,"3,75","Klassifikation ok. Nutzen mittel, da sehr eng begrenzter Pruefschritt."
+7,E1,26 J. Entw./Modern.,4,4,5,3,"4,00",Bedingung vergleicht Feld mit sich selbst (immer falsch) -> OTHER ist hier ehrlich. Summary erkennt fehlende Aussagekraft korrekt an.
+7,E2,18 J. Entw./Modern.,4,4,4,3,"3,75",OTHER vertretbar; die Selbstvergleichs-Bedingung ist vermutlich ein Bug. Summary deutet das nur indirekt an.
+7,E3,5 J. Modern.,4,4,4,3,"3,75",Korrekt als OTHER eingestuft. Schwedische Feldnamen + sinnlose Bedingung = kein klarer Fachbezug.
+7,E4,4 J. Entw.,3,4,4,3,"3,50","Tote Bedingung (X NOT = X). OTHER ist angemessen, Praxisnutzen begrenzt."
+7,E5,"1,5 J. Modern. (Junior)",3,3,4,2,"3,00","Unklarer Code, vermutlich fehlerhaft. OTHER ok, aber Nutzen gering."
+8,E1,26 J. Entw./Modern.,5,5,5,4,"4,75",CICS-EIBRESP-Fehlerpfad mit Rollback/Status/Return: lehrbuchhaftes CFT.
+8,E2,18 J. Entw./Modern.,5,5,5,4,"4,75","Mehrstufige technische Fehlerbehandlung. CFT eindeutig, gut dokumentierbar."
+8,E3,5 J. Modern.,4,5,5,4,"4,50","Korrekt. Viele PERFORM-Wege -> klares Routing. Titel knapp, aber zutreffend."
+8,E4,4 J. Entw.,4,4,5,4,"4,25","CFT klar. Nuetzlich, um CICS-Fehlerketten nachzuvollziehen."
+8,E5,"1,5 J. Modern. (Junior)",4,4,4,4,"4,00","Klassifikation klar. Viele DFH/Status-Tokens, aber Logik ist gut erkennbar."
+9,E1,26 J. Entw./Modern.,5,5,5,4,"4,75","Klassisches 'wenn Feld belegt, dann uebernehmen'-Idiom; drei parallele Belege bestaetigen es."
+9,E2,18 J. Entw./Modern.,5,5,5,4,"4,75","IDIOM_PATTERN korrekt. Datenuebernahme bei vorhandenem Wert, kein Fachentscheid."
+9,E3,5 J. Modern.,4,5,5,4,"4,50","Korrekt; SPACES-Pruefung ist Standard. Titel gut, Summary treffend."
+9,E4,4 J. Entw.,4,4,5,4,"4,25",Idiom klar erkennbar. Nuetzlich beim Mapping von Eingabe- zu Ausgabefeldern.
+9,E5,"1,5 J. Modern. (Junior)",4,4,5,3,"4,00","Klassifikation klar. Nutzen mittel, da sehr generisches Uebernahmemuster."
+10,E1,26 J. Entw./Modern.,4,4,4,3,"3,75",Optionsvalidierung mit Fehlermeldung -> DV vertretbar. Konstruktion (EVALUATE nur mit WHEN OTHER) ist ungewoehnlich.
+10,E2,18 J. Entw./Modern.,4,4,4,3,"3,75",DV passt. Das EVALUATE ohne echte WHEN-Zweige ist stilistisch fragwuerdig; Summary erwaehnt das nicht.
+10,E3,5 J. Modern.,3,4,4,3,"3,50",Korrekt klassifiziert. Misch-Konstrukt EVALUATE+IF mindert Klarheit.
+10,E4,4 J. Entw.,3,3,4,3,"3,25",DV ok. Praktisch eher ein Anti-Pattern; Nutzen begrenzt.
+10,E5,"1,5 J. Modern. (Junior)",3,3,3,3,"3,00",Ungewohntes Konstrukt. Klassifikation gerade noch angemessen.
+11,E1,26 J. Entw./Modern.,5,5,4,4,"4,50","SQLCODE-Anzeige-Idiom; drei Belege identisch. Grenze zu CFT, aber Idiom hier vertretbar."
+11,E2,18 J. Entw./Modern.,5,5,4,4,"4,50",Korrekt. Reines Anzeige-/Logging-Muster ohne Verzweigung -> IDIOM_PATTERN passt.
+11,E3,5 J. Modern.,4,5,4,4,"4,25","IDIOM_PATTERN ok; man koennte CFT argumentieren, aber kein echtes Routing vorhanden."
+11,E4,4 J. Entw.,4,4,4,4,"4,00","Standard-SQL-Fehlerausgabe. Idiom angemessen, Nutzen solide."
+11,E5,"1,5 J. Modern. (Junior)",4,4,4,3,"3,75","Klassifikation ok. Sehr haeufiges Boilerplate, daher Nutzen mittel."
+12,E1,26 J. Entw./Modern.,5,5,5,5,"5,00",Positiver Verkaufsbetrag -> Umsatzaddition + Provisionsberechnung: echte Geschaeftsregel. BRC vorbildlich.
+12,E2,18 J. Entw./Modern.,5,5,5,5,"5,00",Klarer Fachentscheid (Sales/Commission). Drei Belege belegen Wiederkehr. Sehr nuetzlich.
+12,E3,5 J. Modern.,5,5,5,4,"4,75","Korrekt. Domaenenbezug (REGION-SALES, COMMISSION) eindeutig. Hoher Doku-Wert."
+12,E4,4 J. Entw.,4,5,5,4,"4,50",BRC klar. CALL-Variation (CWK/CWX/CWB) zeigt parallele Auspraegungen.
+12,E5,"1,5 J. Modern. (Junior)",4,4,5,4,"4,25",Klassifikation klar fachlich. Gut nachvollziehbar trotz vieler MOVE-Schritte.
+13,E1,26 J. Entw./Modern.,5,5,5,3,"4,50","Flag-Setzen bei festem Wert: typisches Status-Idiom, korrekt eingeordnet."
+13,E2,18 J. Entw./Modern.,4,5,5,3,"4,25","IDIOM_PATTERN passt. Sehr kleines Muster, daher F4 nur mittel."
+13,E3,5 J. Modern.,4,4,5,3,"4,00",Korrekt. Triviales Statusflag; Nutzen fuer Doku begrenzt.
+13,E4,4 J. Entw.,4,4,5,3,"4,00","Idiom klar. Wenig Substanz, aber Klassifikation richtig."
+13,E5,"1,5 J. Modern. (Junior)",4,4,4,2,"3,50","Klassifikation ok. Sehr kleines Muster, praktisch kaum verwertbar."
+14,E1,26 J. Entw./Modern.,4,4,4,4,"4,00",Pfadpruefung + Authentifizierungsfolge: grenzwertig zwischen CFT und BRC. Zugriffssteuerung hat fachlichen Anteil -> BRC vertretbar.
+14,E2,18 J. Entw./Modern.,4,4,4,4,"4,00","Authentifizierung/Zugriff laesst sich fachlich lesen. BRC ok, CFT waere auch denkbar."
+14,E3,5 J. Modern.,4,4,3,4,"3,75",Tendenz eher CFT (Routing zu PERFORM-Paragraphen). BRC nur knapp angemessen.
+14,E4,4 J. Entw.,4,4,3,4,"3,75",Grenzfall. Die PERFORM-Kaskade wirkt eher wie CFT als wie Geschaeftsregel.
+14,E5,"1,5 J. Modern. (Junior)",3,4,3,3,"3,25",CICS-Auth-Routing. BRC fraglich; ich haette CFT gewaehlt.
+15,E1,26 J. Entw./Modern.,4,4,4,4,"4,00","Normalisierung '-' -> Space ist eher Datenbereinigung als Validierung; DV grenzwertig, aber vertretbar."
+15,E2,18 J. Entw./Modern.,4,4,4,4,"4,00",DV ok; eigentlich Normalisierung. Drei parallele Belege stuetzen das Muster.
+15,E3,5 J. Modern.,4,4,3,4,"3,75","Eher Normalisierung als Validierung. DV nur knapp angemessen, IDIOM_PATTERN denkbar."
+15,E4,4 J. Entw.,3,4,3,3,"3,25",Bindestrich-Ersetzung. Grenzfall DV/Idiom; Praxisnutzen mittel.
+15,E5,"1,5 J. Modern. (Junior)",3,3,3,3,"3,00","Einfaches Ersetzen. Klassifikation fraglich, eher Idiom."
+16,E1,26 J. Entw./Modern.,4,4,4,4,"4,00","Kontonummer -> fester Kundenname. Fachlicher Klang, aber hartkodierte Namen wirken wie Testdaten -> BRC vertretbar mit Vorbehalt."
+16,E2,18 J. Entw./Modern.,4,3,3,3,"3,25",Hartkodierte Personennamen sind eher statische Testdaten als echte Geschaeftsregel; BRC missverstaendlich.
+16,E3,5 J. Modern.,4,4,3,3,"3,50","Klassifikation grenzwertig: Anti-Pattern (Daten im Code), nicht echte Regel."
+16,E4,4 J. Entw.,4,3,3,3,"3,25","Wirkt wie Demo-/Testdaten. BRC zwar vertretbar, aber irrefuehrend."
+16,E5,"1,5 J. Modern. (Junior)",4,3,3,3,"3,25",Feste Namen pro Kontonummer. Eher Datenkonstanten als Regel; Nutzen gering.
+17,E1,26 J. Entw./Modern.,5,5,5,4,"4,75","Init-/Connect-Steuerung mit verschachtelten DB-Routinen: klares CFT, sehr lesbar."
+17,E2,18 J. Entw./Modern.,5,5,5,4,"4,75",CFT korrekt; technische Ablaufsteuerung nach Verbindungsstatus. Gut dokumentierbar.
+17,E3,5 J. Modern.,4,5,5,4,"4,50",Korrekt. Mehrere Verarbeitungswege -> CFT. Titel treffend.
+17,E4,4 J. Entw.,4,4,5,4,"4,25",CFT eindeutig. Connect/Disconnect-Sequenz nuetzlich fuer Programmverstaendnis.
+17,E5,"1,5 J. Modern. (Junior)",4,4,5,3,"4,00","Klassifikation klar. Nutzen mittel, da rein technischer Ablauf."
+18,E1,26 J. Entw./Modern.,4,4,5,3,"4,00","Menue-Routing per EVALUATE -> CFT korrekt. Nur ein WHEN-Zweig, daher Nutzen mittel."
+18,E2,18 J. Entw./Modern.,4,4,5,3,"4,00",CFT passt. Sehr kleines Routing; Summary korrekt.
+18,E3,5 J. Modern.,4,4,5,3,"4,00",Korrekt. Einzelner Verarbeitungszweig; begrenzte Aussagekraft.
+18,E4,4 J. Entw.,3,4,5,3,"3,75",CFT klar. Praktisch wenig Substanz (nur WHEN 2).
+18,E5,"1,5 J. Modern. (Junior)",3,3,4,2,"3,00","Klassifikation ok. Nur ein Zweig, kaum verwertbar."
+19,E1,26 J. Entw./Modern.,4,4,5,3,"4,00",Bedingung ohne Wirkung (beide Zweige identisch). Summary erkennt das korrekt an -> IDIOM_PATTERN/Anti-Pattern gut beschrieben.
+19,E2,18 J. Entw./Modern.,4,4,5,3,"4,00",Korrekt: tote Verzweigung. Idiom-Einordnung ehrlich; F4 mittel.
+19,E3,5 J. Modern.,4,4,4,3,"3,75","Korrekt erkannt, dass beide Zweige gleich sind. Nutzen begrenzt."
+19,E4,4 J. Entw.,3,4,4,3,"3,50","Sinnlose Verzweigung (Code-Smell). Idiom ok, EXEC_BLOCK_STUB stoert."
+19,E5,"1,5 J. Modern. (Junior)",3,3,4,2,"3,00","Identische Aktion in IF/ELSE. Klassifikation ok, Nutzen gering."
+20,E1,26 J. Entw./Modern.,5,5,5,5,"5,00","Eingabelaengenpruefung mit Return-Code: klassische DV, sehr typisch und nuetzlich."
+20,E2,18 J. Entw./Modern.,5,5,5,5,"5,00",DV korrekt. Drei Belege bestaetigen das Laengenpruefmuster. Hoher Praxiswert.
+20,E3,5 J. Modern.,4,5,5,4,"4,50",Korrekt. Standard-CA-Laengencheck; gut dokumentierbar.
+20,E4,4 J. Entw.,4,4,5,4,"4,25",DV klar. Nuetzlich bei Migration von CICS-Schnittstellen.
+20,E5,"1,5 J. Modern. (Junior)",4,4,5,4,"4,25",Klassifikation klar. Verstaendliches Validierungsmuster.
+21,E1,26 J. Entw./Modern.,4,4,4,4,"4,00",Berechnung nur bei fehlerfreiem Zustand: fachlich lesbarer Entscheid -> BRC vertretbar.
+21,E2,18 J. Entw./Modern.,4,4,4,4,"4,00",BRC ok; COMPUTE bei 'kein Fehler' hat fachlichen Charakter. Titel etwas sperrig.
+21,E3,5 J. Modern.,4,4,4,4,"4,00","Korrekt. Bedingte Berechnung; Grenze zu DV, aber BRC haltbar."
+21,E4,4 J. Entw.,3,4,4,4,"3,75",BRC vertretbar. SPACES-als-Fehlerflag ist gewoehnungsbeduerftig.
+21,E5,"1,5 J. Modern. (Junior)",3,4,3,3,"3,25","Klassifikation grenzwertig. Berechnung ist da, aber Fachbezug schwach."
+22,E1,26 J. Entw./Modern.,4,4,4,3,"3,75",Pruefung auf unzulaessige Zeichenkombination -> DV korrekt. Generische Felder X/Y.
+22,E2,18 J. Entw./Modern.,4,4,4,3,"3,75",DV passt. Sehr abstrakte Variablennamen mindern Aussagekraft.
+22,E3,5 J. Modern.,3,4,4,3,"3,50",Korrekt. Ohne Domaenenbezug (X/Y) nur begrenzt verwertbar.
+22,E4,4 J. Entw.,3,3,4,3,"3,25",DV ok. Eng verwandt mit Sample 5; generisch.
+22,E5,"1,5 J. Modern. (Junior)",3,3,3,2,"2,75","X/Y ohne Kontext. Klassifikation gerade noch ok, Nutzen gering."
+23,E1,26 J. Entw./Modern.,5,5,5,3,"4,50","Laengen>0 -> Wert uebernehmen: kleines technisches Idiom, korrekt."
+23,E2,18 J. Entw./Modern.,4,5,5,3,"4,25",IDIOM_PATTERN passt. Triviale bedingte Zuweisung; F4 mittel.
+23,E3,5 J. Modern.,4,4,5,3,"4,00","Korrekt. Sehr kleines Muster, begrenzter Nutzen."
+23,E4,4 J. Entw.,4,4,5,3,"4,00","Idiom klar. Wenig Substanz, Klassifikation aber richtig."
+23,E5,"1,5 J. Modern. (Junior)",4,4,4,2,"3,50",Klassifikation ok. Kaum praktischer Mehrwert.
+24,E1,26 J. Entw./Modern.,4,4,4,4,"4,00",Gestaffelte Bereichszuordnung zu Index 2-5: fachliche Klassierung -> BRC vertretbar.
+24,E2,18 J. Entw./Modern.,4,4,4,4,"4,00",BRC ok; Bereichseinstufung hat fachlichen Charakter. Verschachtelung gut beschrieben.
+24,E3,5 J. Modern.,4,4,4,4,"4,00","Korrekt. Range-Mapping; Grenze zu CFT, aber Bereichslogik ist fachlich."
+24,E4,4 J. Entw.,4,4,4,4,"4,00",BRC vertretbar. Zwei parallele Belege (SALES/MGMT) stuetzen das Muster.
+24,E5,"1,5 J. Modern. (Junior)",3,4,3,3,"3,25","Index-Zuweisung. BRC fraglich, eher CFT-aehnliches Routing."
+25,E1,26 J. Entw./Modern.,4,4,4,3,"3,75",Ergebnis -> Statusnachricht/Code/Flag: fachlich lesbar im Spielkontext -> BRC vertretbar.
+25,E2,18 J. Entw./Modern.,4,4,4,3,"3,75","BRC ok; Spiel-Domaene (WIN/LOSE). Summary korrekt, Nutzen kontextabhaengig."
+25,E3,5 J. Modern.,4,4,4,3,"3,75","Korrekt. Outcome-Mapping ist fachlich, wenn auch spielspezifisch."
+25,E4,4 J. Entw.,4,4,3,3,"3,50",Grenzfall. Status-Mapping wirkt teils technisch; BRC knapp angemessen.
+25,E5,"1,5 J. Modern. (Junior)",3,4,3,3,"3,25","Spiel-Status. BRC vertretbar, aber begrenzter Praxisbezug fuer Migration."
+26,E1,26 J. Entw./Modern.,5,4,4,4,"4,25","ASCII-Zeichen-zu-Code-Tabelle: nachvollziehbare Zuordnung. Eher Lookup/Idiom als Geschaeftsregel, aber BRC vertretbar."
+26,E2,18 J. Entw./Modern.,5,4,4,4,"4,25",Korrekt beschrieben. Die riesige ELSE-IF-Kette ist eher eine technische Mapping-Tabelle als echte Fachregel.
+26,E3,5 J. Modern.,5,4,4,4,"4,25",Titel treffend. BRC grenzwertig; man koennte IDIOM_PATTERN (Mapping) argumentieren.
+26,E4,4 J. Entw.,4,4,4,4,"4,00","Korrekte Beschreibung. Sehr lange Kette; BRC vertretbar, Nutzen ok."
+26,E5,"1,5 J. Modern. (Junior)",4,4,3,3,"3,50","Zeichen-Mapping. Eher technisch; BRC fraglich, aber Titel passt."
+27,E1,26 J. Entw./Modern.,5,5,5,4,"4,75",Steuerung der Web-Verbindung nach Betriebsmodus: klares CFT.
+27,E2,18 J. Entw./Modern.,5,5,5,4,"4,75",CFT korrekt; OR-Bedingung ueber Modi steuert PERFORM. Gut lesbar.
+27,E3,5 J. Modern.,4,5,5,4,"4,50",Korrekt. Technische Ablaufsteuerung; Titel treffend.
+27,E4,4 J. Entw.,4,4,5,4,"4,25",CFT klar. Nuetzlich fuer Verstaendnis der Web-Verarbeitung.
+27,E5,"1,5 J. Modern. (Junior)",4,4,5,3,"4,00",Klassifikation klar. Nutzen mittel.
+28,E1,26 J. Entw./Modern.,4,4,5,3,"4,00","Anfragetyp-Routing zu Datei-Lesen: CFT korrekt. Nur ein WHEN, daher Nutzen mittel."
+28,E2,18 J. Entw./Modern.,4,4,5,3,"4,00",CFT passt. Sehr kleines Routing; Summary korrekt.
+28,E3,5 J. Modern.,4,4,5,3,"4,00",Korrekt. Einzelzweig; begrenzte Aussagekraft.
+28,E4,4 J. Entw.,3,4,5,3,"3,75",CFT klar. Wenig Substanz (nur WHEN 'R').
+28,E5,"1,5 J. Modern. (Junior)",3,3,4,2,"3,00","Klassifikation ok. Nur ein Zweig, kaum verwertbar."
+29,E1,26 J. Entw./Modern.,5,5,5,5,"5,00",Leer-/Numerik-Pruefung mit Fehlerstruktur und Else-Uebernahme: vorbildliche DV.
+29,E2,18 J. Entw./Modern.,5,5,5,5,"5,00",DV korrekt; klare Validierung mit Fehlerpfad und Gut-Fall. Hoher Praxiswert.
+29,E3,5 J. Modern.,5,5,5,4,"4,75",Korrekt. Vollstaendiges Validierungsmuster; gut dokumentierbar.
+29,E4,4 J. Entw.,4,5,5,4,"4,50","DV eindeutig. SPACE/NUMERIC-Check ist Standard, sehr nuetzlich."
+29,E5,"1,5 J. Modern. (Junior)",4,4,5,4,"4,25",Klassifikation klar. Gut verstaendliches Validierungsmuster.
+30,E1,26 J. Entw./Modern.,4,4,4,3,"3,75","WHEN OTHER -> Return-Code + STOP RUN: technische Abbruchbehandlung. IDIOM_PATTERN vertretbar, CFT waere auch denkbar."
+30,E2,18 J. Entw./Modern.,4,4,4,3,"3,75","Idiom ok; Abbruch bei unerwartetem Status. Nur WHEN OTHER, daher Nutzen mittel."
+30,E3,5 J. Modern.,4,4,4,3,"3,75",Korrekt. Technischer Standardabbruch; begrenzte Aussagekraft.
+30,E4,4 J. Entw.,3,4,4,3,"3,50",Idiom/CFT-Grenze. STOP RUN ist harte technische Reaktion; Nutzen mittel.
+30,E5,"1,5 J. Modern. (Junior)",3,3,4,2,"3,00","Klassifikation ok. Sehr knappes Muster, kaum Mehrwert."
