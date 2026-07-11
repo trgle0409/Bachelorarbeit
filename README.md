@@ -1,5 +1,4 @@
 <img width="6324" height="1868" alt="image" src="https://github.com/user-attachments/assets/63210326-f117-49a5-88d5-e8da2d9ed0cf" />
-# Dokumentation zum elektronischen Abgabepaket
 
 ## Bachelorarbeit: Hybrider Ansatz zur großskaligen Extraktion von Geschäftsregelkandidaten aus COBOL-Programmen mit Spring Batch und Künstlicher Intelligenz
 
